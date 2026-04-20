@@ -202,7 +202,7 @@ namespace MyXrmToolBoxTool1
 
                     if (!(args.Result is List<Solution> solutions)) { return; }
 
-                    // Insert "All Solutions" at the top
+                    // 1. Prepare your list
                     var allSolutions = new Solution
                     {
                         Id = Guid.Empty,
@@ -210,8 +210,18 @@ namespace MyXrmToolBoxTool1
                     };
                     solutions.Insert(0, allSolutions);
 
+                    // 2. FIX: Reset the DataSource to null first
+                    cbSolutions.DataSource = null;
+
+                    // 3. Clear items (Optional, usually nulling the DataSource is enough)
                     cbSolutions.Items.Clear();
+
+                    // 4. Re-bind the new list
                     cbSolutions.DataSource = solutions;
+
+                    // 5. Ensure DisplayMember and ValueMember are set if needed
+                    cbSolutions.DisplayMember = "Name"; // Adjust based on your Solution model
+                    cbSolutions.ValueMember = "Id";
                 }
             });
         }

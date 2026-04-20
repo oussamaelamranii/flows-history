@@ -54,9 +54,13 @@ namespace MyXrmToolBoxTool1.Services
             var entities = _service.RetrieveMultiple(new FetchExpression(fetch)).Entities.ToList();
 
             var solutions = new List<Solution>();
-
+            Entity test = null;
             foreach (var entity in entities)
             {
+                if (entity.Id.Equals(Guid.Parse("fa9c8aa1-c23c-f111-88b4-002248da1bcb")))
+                {
+                    continue;
+                }
                 var solution = new Solution
                 {
                     Id = entity.Id,

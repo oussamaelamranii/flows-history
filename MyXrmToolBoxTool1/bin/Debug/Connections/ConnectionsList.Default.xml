@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CrmConnections xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ByPassProxyOnLocal>false</ByPassProxyOnLocal>
+  <Connections>
+    <ConnectionDetail>
+      <AuthType>OnlineFederation</AuthType>
+      <AzureAdAppId>51f81489-12ee-4a9e-aaae-a2591f45987d</AzureAdAppId>
+      <BrowserName>None</BrowserName>
+      <ConnectionId>f0eb9ffe-0281-4b75-aa19-7599326eb676</ConnectionId>
+      <ConnectionName />
+      <IsCustomAuth>false</IsCustomAuth>
+      <IsFromSdkLoginCtrl>true</IsFromSdkLoginCtrl>
+      <LastUsedOn>0001-01-01 00:00:00</LastUsedOn>
+      <NewAuthType>AD</NewAuthType>
+      <Organization>org5e25ff71</Organization>
+      <OrganizationDataServiceUrl>https://org5e25ff71.api.crm4.dynamics.com/api/data/v9.2/</OrganizationDataServiceUrl>
+      <OrganizationFriendlyName>SQLI (Upgrade)</OrganizationFriendlyName>
+      <OrganizationServiceUrl>https://org5e25ff71.api.crm4.dynamics.com/XRMServices/2011/Organization.svc</OrganizationServiceUrl>
+      <OrganizationUrlName>org5e25ff71</OrganizationUrlName>
+      <OrganizationVersion>9.2.26034.177</OrganizationVersion>
+      <OriginalUrl>https://org5e25ff71.crm4.dynamics.com</OriginalUrl>
+      <ReplyUrl>app://58145b91-0c36-4500-8554-080854f2ac97/</ReplyUrl>
+      <SavePassword>false</SavePassword>
+      <ServerName>org5e25ff71.crm4.dynamics.com</ServerName>
+      <ServerPort>80</ServerPort>
+      <TenantId>00000000-0000-0000-0000-000000000000</TenantId>
+      <Timeout />
+      <TimeoutTicks>1200000000</TimeoutTicks>
+      <UseIfd>false</UseIfd>
+      <UseMfa>false</UseMfa>
+      <UserName>ouselamrani@sqli.com</UserName>
+      <WebApplicationUrl>https://org5e25ff71.crm4.dynamics.com</WebApplicationUrl>
+    </ConnectionDetail>
+    <ConnectionDetail>
+      <AuthType>OnlineFederation</AuthType>
+      <AzureAdAppId>51f81489-12ee-4a9e-aaae-a2591f45987d</AzureAdAppId>
+      <BrowserName>None</BrowserName>
+      <ConnectionId>0e6b5050-7e79-4e5a-a3b5-791d2120a9e6</ConnectionId>
+      <ConnectionName />
+      <IsCustomAuth>false</IsCustomAuth>
+      <IsFromSdkLoginCtrl>true</IsFromSdkLoginCtrl>
+      <LastUsedOn>0001-01-01 00:00:00</LastUsedOn>
+      <NewAuthType>AD</NewAuthType>
+      <Organization>unq3eaddc26f22cf111a7e56045bd6e9</Organization>
+      <OrganizationDataServiceUrl>https://org0a6340d2.api.crm12.dynamics.com/api/data/v9.2/</OrganizationDataServiceUrl>
+      <OrganizationFriendlyName>CustomerService Trial</OrganizationFriendlyName>
+      <OrganizationServiceUrl>https://org0a6340d2.api.crm12.dynamics.com/XRMServices/2011/Organization.svc</OrganizationServiceUrl>
+      <OrganizationUrlName>org0a6340d2</OrganizationUrlName>
+      <OrganizationVersion>9.2.26041.153</OrganizationVersion>
+      <OriginalUrl>https://org0a6340d2.crm12.dynamics.com</OriginalUrl>
+      <ReplyUrl>app://58145b91-0c36-4500-8554-080854f2ac97/</ReplyUrl>
+      <SavePassword>false</SavePassword>
+      <ServerName>org0a6340d2.crm12.dynamics.com</ServerName>
+      <ServerPort>80</ServerPort>
+      <TenantId>00000000-0000-0000-0000-000000000000</TenantId>
+      <Timeout />
+      <TimeoutTicks>1200000000</TimeoutTicks>
+      <UseIfd>false</UseIfd>
+      <UseMfa>false</UseMfa>
+      <UserName>ouselamrani@sqli.com</UserName>
+      <WebApplicationUrl>https://org0a6340d2.crm12.dynamics.com</WebApplicationUrl>
+    </ConnectionDetail>
+    <ConnectionDetail>
+      <AuthType>OnlineFederation</AuthType>
+      <AzureAdAppId>51f81489-12ee-4a9e-aaae-a2591f45987d</AzureAdAppId>
+      <BrowserName>None</BrowserName>
+      <ConnectionId>45711178-b2bb-4bc8-b478-a0dbca16c2ab</ConnectionId>
+      <ConnectionName>oussama-connection</ConnectionName>
+      <IsCustomAuth>false</IsCustomAuth>
+      <IsFromSdkLoginCtrl>true</IsFromSdkLoginCtrl>
+      <LastUsedOn>0001-01-01 00:00:00</LastUsedOn>
+      <NewAuthType>AD</NewAuthType>
+      <Organization>unqde8ae97d6624f111afc1002248724</Organization>
+      <OrganizationDataServiceUrl>https://org0db0130a.api.crm12.dynamics.com/api/data/v9.2/</OrganizationDataServiceUrl>
+      <OrganizationFriendlyName>CustomerService Trial</OrganizationFriendlyName>
+      <OrganizationServiceUrl>https://org0db0130a.api.crm12.dynamics.com/XRMServices/2011/Organization.svc</OrganizationServiceUrl>
+      <OrganizationUrlName>org0db0130a</OrganizationUrlName>
+      <OrganizationVersion>9.2.26041.153</OrganizationVersion>
+      <OriginalUrl>https://org0db0130a.crm12.dynamics.com</OriginalUrl>
+      <ReplyUrl>app://58145b91-0c36-4500-8554-080854f2ac97/</ReplyUrl>
+      <SavePassword>false</SavePassword>
+      <ServerName>org0db0130a.crm12.dynamics.com</ServerName>
+      <ServerPort>80</ServerPort>
+      <TenantId>00000000-0000-0000-0000-000000000000</TenantId>
+      <Timeout />
+      <TimeoutTicks>1200000000</TimeoutTicks>
+      <UseIfd>false</UseIfd>
+      <UseMfa>false</UseMfa>
+      <UserName>ouselamrani@sqli.com</UserName>
+      <WebApplicationUrl>https://org0db0130a.crm12.dynamics.com</WebApplicationUrl>
+    </ConnectionDetail>
+    <ConnectionDetail>
+      <AuthType>None</AuthType>
+      <AzureAdAppId>51f81489-12ee-4a9e-aaae-a2591f45987d</AzureAdAppId>
+      <BrowserName>None</BrowserName>
+      <ConnectionId>1f57ed8d-849f-493a-99ef-90f8a67cb652</ConnectionId>
+      <ConnectionName>oauth-connection</ConnectionName>
+      <EnvironmentId>cb120c8b-c8ec-e955-b764-3b15ed7c3df8</EnvironmentId>
+      <IsCustomAuth>false</IsCustomAuth>
+      <IsFromSdkLoginCtrl>false</IsFromSdkLoginCtrl>
+      <LastUsedOn>2026-04-20 17:13:23</LastUsedOn>
+      <NewAuthType>OAuth</NewAuthType>
+      <Organization>unq3eaddc26f22cf111a7e56045bd6e9</Organization>
+      <OrganizationDataServiceUrl>https://org0a6340d2.api.crm12.dynamics.com/XRMServices/2011/OrganizationData.svc</OrganizationDataServiceUrl>
+      <OrganizationFriendlyName>CustomerService Trial</OrganizationFriendlyName>
+      <OrganizationServiceUrl>https://org0a6340d2.api.crm12.dynamics.com/XRMServices/2011/Organization.svc</OrganizationServiceUrl>
+      <OrganizationUrlName>org0a6340d2</OrganizationUrlName>
+      <OrganizationVersion>9.2.26041.153</OrganizationVersion>
+      <OriginalUrl>https://org0a6340d2.crm12.dynamics.com/</OriginalUrl>
+      <ReplyUrl>app://58145b91-0c36-4500-8554-080854f2ac97/</ReplyUrl>
+      <SavePassword>false</SavePassword>
+      <ServerName>org0a6340d2.crm12.dynamics.com</ServerName>
+      <ServerPort>443</ServerPort>
+      <TenantId>20f62116-4d0c-44ac-8a45-390ca2765601</TenantId>
+      <Timeout />
+      <TimeoutTicks>1200000000</TimeoutTicks>
+      <UseIfd>false</UseIfd>
+      <UseMfa>true</UseMfa>
+      <UserName>ouselamrani@sqli.com</UserName>
+      <WebApplicationUrl>https://org0a6340d2.crm12.dynamics.com/</WebApplicationUrl>
+    </ConnectionDetail>
+    <ConnectionDetail>
+      <AuthType>None</AuthType>
+      <AzureAdAppId>51f81489-12ee-4a9e-aaae-a2591f45987d</AzureAdAppId>
+      <BrowserName>None</BrowserName>
+      <ConnectionId>99a51253-0353-483f-991c-9bf1822c4f40</ConnectionId>
+      <ConnectionName>OAuth</ConnectionName>
+      <EnvironmentId>5a9a3bad-2ef2-ebc8-ae2d-a5c0b01943fc</EnvironmentId>
+      <IsCustomAuth>false</IsCustomAuth>
+      <IsFromSdkLoginCtrl>false</IsFromSdkLoginCtrl>
+      <LastUsedOn>2026-04-20 17:16:06</LastUsedOn>
+      <NewAuthType>OAuth</NewAuthType>
+      <Organization>unqde8ae97d6624f111afc1002248724</Organization>
+      <OrganizationDataServiceUrl>https://org0db0130a.api.crm12.dynamics.com/XRMServices/2011/OrganizationData.svc</OrganizationDataServiceUrl>
+      <OrganizationFriendlyName>CustomerService Trial</OrganizationFriendlyName>
+      <OrganizationServiceUrl>https://org0db0130a.api.crm12.dynamics.com/XRMServices/2011/Organization.svc</OrganizationServiceUrl>
+      <OrganizationUrlName>org0db0130a</OrganizationUrlName>
+      <OrganizationVersion>9.2.26041.153</OrganizationVersion>
+      <OriginalUrl>https://org0db0130a.crm12.dynamics.com</OriginalUrl>
+      <ReplyUrl>app://58145b91-0c36-4500-8554-080854f2ac97/</ReplyUrl>
+      <SavePassword>false</SavePassword>
+      <ServerName>org0db0130a.crm12.dynamics.com</ServerName>
+      <ServerPort>443</ServerPort>
+      <TenantId>20f62116-4d0c-44ac-8a45-390ca2765601</TenantId>
+      <Timeout />
+      <TimeoutTicks>1200000000</TimeoutTicks>
+      <UseIfd>false</UseIfd>
+      <UseMfa>true</UseMfa>
+      <UserName>ouselamrani@sqli.com</UserName>
+      <WebApplicationUrl>https://org0db0130a.crm12.dynamics.com/</WebApplicationUrl>
+    </ConnectionDetail>
+  </Connections>
+  <IsReadOnly>false</IsReadOnly>
+  <Name>Default</Name>
+  <UseCustomProxy>false</UseCustomProxy>
+  <UseDefaultCredentials>false</UseDefaultCredentials>
+  <UseDetailsView>false</UseDetailsView>
+  <UseInternetExplorerProxy>true</UseInternetExplorerProxy>
+  <UseMruDisplay>false</UseMruDisplay>
+</CrmConnections>

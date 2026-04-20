@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMostRecentlyUsedItem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <MostRecentlyUsedItem>
+    <ConnectionFileName>Default</ConnectionFileName>
+    <ConnectionId>f0eb9ffe-0281-4b75-aa19-7599326eb676</ConnectionId>
+    <ConnectionName />
+    <Date>2026-04-20T15:22:44.5492856+01:00</Date>
+    <PluginName>Flow History oussama</PluginName>
+  </MostRecentlyUsedItem>
+  <MostRecentlyUsedItem>
+    <ConnectionId>45711178-b2bb-4bc8-b478-a0dbca16c2ab</ConnectionId>
+    <ConnectionName />
+    <Date>2026-04-20T16:27:08.1100245+01:00</Date>
+    <PluginName>Flow History oussama</PluginName>
+  </MostRecentlyUsedItem>
+  <MostRecentlyUsedItem>
+    <ConnectionId>1f57ed8d-849f-493a-99ef-90f8a67cb652</ConnectionId>
+    <ConnectionName>oauth-connection</ConnectionName>
+    <Date>2026-04-20T17:13:54.3325961+01:00</Date>
+    <PluginName>Flow History oussama</PluginName>
+  </MostRecentlyUsedItem>
+  <MostRecentlyUsedItem>
+    <ConnectionFileName>Default</ConnectionFileName>
+    <ConnectionId>99a51253-0353-483f-991c-9bf1822c4f40</ConnectionId>
+    <ConnectionName>OAuth</ConnectionName>
+    <Date>2026-04-20T17:42:43.6545806+01:00</Date>
+    <PluginName>Flow History oussama</PluginName>
+  </MostRecentlyUsedItem>
+</ArrayOfMostRecentlyUsedItem>
