@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+
+namespace MyXrmToolBoxTool1.Models.DTOs
+{
+    public class FlowRunsResponseDto
+    {
+        public List<FlowRunDto> value { get; set; }
+        public string nextLink { get; set; }
+        public FlowApiError error { get; set; }
+    }
+
+    public class FlowRunDto
+    {
+        public string name { get; set; }
+        public string id { get; set; }
+        public string type { get; set; }
+        public FlowRunPropertiesDto properties { get; set; }
+    }
+
+    public class FlowRunPropertiesDto
+    {
+        public DateTimeOffset startTime { get; set; }
+        public DateTimeOffset endTime { get; set; }
+        public string status { get; set; }
+        public string code { get; set; }
+        public FlowRunErrorDto error { get; set; }
+        public FlowRunCorrelationDto correlation { get; set; }
+        public FlowRunTriggerDto trigger { get; set; }
+    }
+
+    public class FlowRunErrorDto
+    {
+        public string code { get; set; }
+        public string message { get; set; }
+    }
+
+    public class FlowRunCorrelationDto
+    {
+        public string clientTrackingId { get; set; }
+    }
+
+    public class FlowRunTriggerDto
+    {
+        public string name { get; set; }
+        public OutputslinkDto outputsLink { get; set; }
+        public DateTimeOffset startTime { get; set; }
+        public DateTimeOffset endTime { get; set; }
+        public string status { get; set; }
+    }
+
+    public class OutputslinkDto
+    {
+        public string uri { get; set; }
+        public string contentVersion { get; set; }
+        public int contentSize { get; set; }
+    }
+
+    public class FlowApiError
+    {
+        public string code { get; set; }
+        public string message { get; set; }
+    }
+}

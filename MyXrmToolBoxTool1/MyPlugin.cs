@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
@@ -12,14 +12,14 @@ namespace MyXrmToolBoxTool1
     // Do not forget to update version number and author (company attribute) in AssemblyInfo.cs class
     // To generate Base64 string for Images below, you can use https://www.base64-image.de/
     [Export(typeof(IXrmToolBoxPlugin)),
-        ExportMetadata("Name", "My First Plugin"),
-        ExportMetadata("Description", "This is a description for my first plugin"),
+        ExportMetadata("Name", "Flow History"),
+        ExportMetadata("Description", "Browse Power Automate flow execution history from your Dataverse solutions. Select flows and view their run history with status, dates, duration, and error details."),
         // Please specify the base64 content of a 32x32 pixels image
         ExportMetadata("SmallImageBase64", null),
         // Please specify the base64 content of a 80x80 pixels image
         ExportMetadata("BigImageBase64", null),
-        ExportMetadata("BackgroundColor", "Lavender"),
-        ExportMetadata("PrimaryFontColor", "Black"),
+        ExportMetadata("BackgroundColor", "#1a1a2e"),
+        ExportMetadata("PrimaryFontColor", "White"),
         ExportMetadata("SecondaryFontColor", "Gray")]
     public class MyPlugin : PluginBase
     {
