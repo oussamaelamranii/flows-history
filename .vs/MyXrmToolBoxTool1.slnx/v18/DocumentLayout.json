@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|c:\\users\\ouselamrani\\source\\repos\\myxrmtoolboxtool1\\myxrmtoolboxtool1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|solutionrelative:myxrmtoolboxtool1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\myxrmtoolboxtool1\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|solutionrelative:myxrmtoolboxtool1\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\myxrmtoolboxtool1\\myplugincontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|solutionrelative:myxrmtoolboxtool1\\myplugincontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\myxrmtoolboxtool1\\myplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{011CE42E-2DCB-4A89-A580-2BA6ECD50F00}|MyXrmToolBoxTool1\\MyXrmToolBoxTool1.csproj|solutionrelative:myxrmtoolboxtool1\\myplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 115,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\.gitignore",
+              "RelativeDocumentMoniker": "MyXrmToolBoxTool1\\.gitignore",
+              "ToolTip": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\.gitignore",
+              "RelativeToolTip": "MyXrmToolBoxTool1\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-20T09:13:33.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".editorconfig",
+              "DocumentMoniker": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\.editorconfig",
+              "RelativeDocumentMoniker": "MyXrmToolBoxTool1\\.editorconfig",
+              "ToolTip": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\.editorconfig",
+              "RelativeToolTip": "MyXrmToolBoxTool1\\.editorconfig",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-20T09:13:02.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MyPluginControl.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\MyPluginControl.cs",
+              "RelativeDocumentMoniker": "MyXrmToolBoxTool1\\MyPluginControl.cs",
+              "ToolTip": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\MyPluginControl.cs [Design]",
+              "RelativeToolTip": "MyXrmToolBoxTool1\\MyPluginControl.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T09:09:41.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MyPlugin.cs",
+              "DocumentMoniker": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\MyPlugin.cs",
+              "RelativeDocumentMoniker": "MyXrmToolBoxTool1\\MyPlugin.cs",
+              "ToolTip": "C:\\Users\\ouselamrani\\source\\repos\\MyXrmToolBoxTool1\\MyXrmToolBoxTool1\\MyPlugin.cs",
+              "RelativeToolTip": "MyXrmToolBoxTool1\\MyPlugin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T09:09:31.552Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
