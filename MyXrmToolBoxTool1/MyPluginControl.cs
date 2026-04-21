@@ -130,6 +130,7 @@ namespace MyXrmToolBoxTool1
             
             // TextBoxes and ComboBoxes
             tbSearch.BorderStyle = BorderStyle.FixedSingle;
+            tbTriggerSearch.BorderStyle = BorderStyle.FixedSingle;
             cbSolutions.FlatStyle = FlatStyle.Flat;
             cbxStatus.FlatStyle = FlatStyle.Flat;
             cbxPageSize.FlatStyle = FlatStyle.Flat;
@@ -582,14 +583,25 @@ namespace MyXrmToolBoxTool1
         {
             if (_sortedFlowRuns == null) return;
 
-            var totalRows = _sortedFlowRuns.Count;
+            // Apply trigger input search filter
+            var triggerSearch = tbTriggerSearch.Text.Trim();
+            var filteredRuns = string.IsNullOrWhiteSpace(triggerSearch)
+                ? _sortedFlowRuns
+                : _sortedFlowRuns
+                    .Where(r => r.TriggerInputs != null &&
+                                r.TriggerInputs.Any(kv =>
+                                    (kv.Key != null && kv.Key.IndexOf(triggerSearch, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                                    (kv.Value != null && kv.Value.IndexOf(triggerSearch, StringComparison.OrdinalIgnoreCase) >= 0)))
+                    .ToList();
+
+            var totalRows = filteredRuns.Count;
             var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalRows / _pageSize));
 
             // Clamp current page
             if (_currentPage < 1) _currentPage = 1;
             if (_currentPage > totalPages) _currentPage = totalPages;
 
-            var pageRows = _sortedFlowRuns
+            var pageRows = filteredRuns
                 .Skip((_currentPage - 1) * _pageSize)
                 .Take(_pageSize)
                 .ToList();
@@ -633,6 +645,12 @@ namespace MyXrmToolBoxTool1
                 _currentPage = 1;
                 RefreshGrid();
             }
+        }
+
+        private void tbTriggerSearch_TextChanged(object sender, EventArgs e)
+        {
+            _currentPage = 1;
+            RefreshGrid();
         }
 
         #endregion
