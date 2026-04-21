@@ -646,7 +646,7 @@ namespace MyXrmToolBoxTool1
             foreach (DataGridViewRow row in selectedRows)
             {
                 var run = row.DataBoundItem as FlowRun;
-                if (run != null && run.Status == FlowRunStatus.Running)
+                if (run != null && run.Status == Enums.FlowRunStatus.Running)
                 {
                     runsToCancel.Add(run);
                 }
