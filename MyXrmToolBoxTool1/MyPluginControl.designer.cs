@@ -70,8 +70,6 @@ namespace MyXrmToolBoxTool1
             this.lblDateTo = new System.Windows.Forms.Label();
             this.dtpDateFrom = new System.Windows.Forms.DateTimePicker();
             this.lblDateFrom = new System.Windows.Forms.Label();
-            this.lblTriggerSearch = new System.Windows.Forms.Label();
-            this.tbTriggerSearch = new System.Windows.Forms.TextBox();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -300,7 +298,7 @@ namespace MyXrmToolBoxTool1
             this.gbFlowRuns.Controls.Add(this.dgvFlowRuns);
             this.gbFlowRuns.Controls.Add(this.pnlPagination);
             this.gbFlowRuns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbFlowRuns.Location = new System.Drawing.Point(0, 82);
+            this.gbFlowRuns.Location = new System.Drawing.Point(0, 56);
             this.gbFlowRuns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbFlowRuns.Name = "gbFlowRuns";
             this.gbFlowRuns.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -386,8 +384,7 @@ namespace MyXrmToolBoxTool1
             this.FlowRunEndDate,
             this.FlowRunDuration,
             this.FlowRunUrl,
-            this.FlowRunError,
-            this.FlowRunTriggerInputs});
+            this.FlowRunError});
             this.dgvFlowRuns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFlowRuns.Location = new System.Drawing.Point(7, 21);
             this.dgvFlowRuns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -463,16 +460,6 @@ namespace MyXrmToolBoxTool1
             this.FlowRunError.Name = "FlowRunError";
             this.FlowRunError.ReadOnly = true;
             // 
-            // FlowRunTriggerInputs
-            // 
-            this.FlowRunTriggerInputs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FlowRunTriggerInputs.DataPropertyName = "TriggerInputsDisplay";
-            this.FlowRunTriggerInputs.FillWeight = 150F;
-            this.FlowRunTriggerInputs.HeaderText = "Trigger Inputs";
-            this.FlowRunTriggerInputs.MinimumWidth = 6;
-            this.FlowRunTriggerInputs.Name = "FlowRunTriggerInputs";
-            this.FlowRunTriggerInputs.ReadOnly = true;
-            // 
             // gbRunFilters
             // 
             this.gbRunFilters.Controls.Add(this.btnGetRuns);
@@ -482,14 +469,12 @@ namespace MyXrmToolBoxTool1
             this.gbRunFilters.Controls.Add(this.lblDateTo);
             this.gbRunFilters.Controls.Add(this.dtpDateFrom);
             this.gbRunFilters.Controls.Add(this.lblDateFrom);
-            this.gbRunFilters.Controls.Add(this.lblTriggerSearch);
-            this.gbRunFilters.Controls.Add(this.tbTriggerSearch);
             this.gbRunFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbRunFilters.Location = new System.Drawing.Point(0, 0);
             this.gbRunFilters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRunFilters.Name = "gbRunFilters";
             this.gbRunFilters.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.gbRunFilters.Size = new System.Drawing.Size(708, 82);
+            this.gbRunFilters.Size = new System.Drawing.Size(708, 56);
             this.gbRunFilters.TabIndex = 0;
             this.gbRunFilters.TabStop = false;
             this.gbRunFilters.Text = "Run Filters";
@@ -568,24 +553,6 @@ namespace MyXrmToolBoxTool1
             this.lblDateFrom.TabIndex = 0;
             this.lblDateFrom.Text = "From:";
             // 
-            // lblTriggerSearch
-            // 
-            this.lblTriggerSearch.AutoSize = true;
-            this.lblTriggerSearch.Location = new System.Drawing.Point(11, 52);
-            this.lblTriggerSearch.Name = "lblTriggerSearch";
-            this.lblTriggerSearch.Size = new System.Drawing.Size(100, 16);
-            this.lblTriggerSearch.TabIndex = 7;
-            this.lblTriggerSearch.Text = "Trigger Input Search:";
-            // 
-            // tbTriggerSearch
-            // 
-            this.tbTriggerSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTriggerSearch.Location = new System.Drawing.Point(120, 49);
-            this.tbTriggerSearch.Name = "tbTriggerSearch";
-            this.tbTriggerSearch.Size = new System.Drawing.Size(573, 22);
-            this.tbTriggerSearch.TabIndex = 8;
-            this.tbTriggerSearch.TextChanged += new System.EventHandler(this.tbTriggerSearch_TextChanged);
-            // 
             // MyPluginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -654,8 +621,6 @@ namespace MyXrmToolBoxTool1
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cbxStatus;
         private System.Windows.Forms.Button btnGetRuns;
-        private System.Windows.Forms.Label lblTriggerSearch;
-        private System.Windows.Forms.TextBox tbTriggerSearch;
 
         private System.Windows.Forms.GroupBox gbFlowRuns;
         private System.Windows.Forms.DataGridView dgvFlowRuns;
@@ -673,6 +638,5 @@ namespace MyXrmToolBoxTool1
         private System.Windows.Forms.DataGridViewTextBoxColumn FlowRunDuration;
         private System.Windows.Forms.DataGridViewLinkColumn FlowRunUrl;
         private System.Windows.Forms.DataGridViewTextBoxColumn FlowRunError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FlowRunTriggerInputs;
     }
 }
