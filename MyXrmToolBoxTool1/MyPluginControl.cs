@@ -32,6 +32,11 @@ namespace MyXrmToolBoxTool1
         private DataverseClient dataverseClient;
         private OrganizationGeo Geo;
 
+        // Pagination state
+        private int _currentPage = 1;
+        private int _pageSize = 50;
+        private List<FlowRun> _sortedFlowRuns = new List<FlowRun>();
+
         public MyPluginControl()
         {
             InitializeComponent();
@@ -57,6 +62,9 @@ namespace MyXrmToolBoxTool1
 
             // Set default status
             cbxStatus.SelectedIndex = 0; // "All"
+
+            // Init page size combo
+            cbxPageSize.SelectedIndex = 1; // default to 50
 
             // Show connect button only if no client secret configured
             if (string.IsNullOrWhiteSpace(ConnectionDetail?.S2SClientSecret))
@@ -124,6 +132,27 @@ namespace MyXrmToolBoxTool1
             tbSearch.BorderStyle = BorderStyle.FixedSingle;
             cbSolutions.FlatStyle = FlatStyle.Flat;
             cbxStatus.FlatStyle = FlatStyle.Flat;
+            cbxPageSize.FlatStyle = FlatStyle.Flat;
+
+            // Pagination panel
+            pnlPagination.BackColor = Color.FromArgb(245, 245, 245);
+
+            // Pagination buttons
+            foreach (var btn in new[] { btnPrevPage, btnNextPage })
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderColor = Color.FromArgb(0, 120, 215);
+                btn.FlatAppearance.BorderSize = 1;
+                btn.BackColor = Color.White;
+                btn.ForeColor = Color.FromArgb(0, 120, 215);
+                btn.Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+                btn.Cursor = Cursors.Hand;
+            }
+
+            lblPageInfo.Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+            lblPageInfo.ForeColor = Color.FromArgb(80, 80, 80);
+            lblPageSize.Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+            lblPageSize.ForeColor = Color.FromArgb(80, 80, 80);
         }
 
         #endregion
@@ -532,18 +561,78 @@ namespace MyXrmToolBoxTool1
 
                     FlowRuns = runs;
 
-                    // Sort by start date descending
-                    var sortedRuns = new BindingList<FlowRun>(
-                        runs.OrderByDescending(r => r.StartDate).ToList());
-
-                    dgvFlowRuns.DataSource = sortedRuns;
+                    // Sort by start date descending and store
+                    _sortedFlowRuns = runs.OrderByDescending(r => r.StartDate).ToList();
+                    _currentPage = 1;
 
                     // Show flow column only if multiple flows selected
                     dgvFlowRuns.Columns["FlowRunFlow"].Visible = selectedFlows.Count > 1;
 
                     gbFlowRuns.Text = $"Flow Runs ({runs.Count})";
+                    RefreshGrid();
                 }
             });
+        }
+
+        #endregion
+
+        #region Pagination
+
+        private void RefreshGrid()
+        {
+            if (_sortedFlowRuns == null) return;
+
+            var totalRows = _sortedFlowRuns.Count;
+            var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalRows / _pageSize));
+
+            // Clamp current page
+            if (_currentPage < 1) _currentPage = 1;
+            if (_currentPage > totalPages) _currentPage = totalPages;
+
+            var pageRows = _sortedFlowRuns
+                .Skip((_currentPage - 1) * _pageSize)
+                .Take(_pageSize)
+                .ToList();
+
+            dgvFlowRuns.DataSource = new BindingList<FlowRun>(pageRows);
+
+            UpdatePaginationControls(totalRows, totalPages);
+        }
+
+        private void UpdatePaginationControls(int totalRows, int totalPages)
+        {
+            lblPageInfo.Text = $"Page {_currentPage} of {totalPages}  ({totalRows} total)";
+            btnPrevPage.Enabled = _currentPage > 1;
+            btnNextPage.Enabled = _currentPage < totalPages;
+        }
+
+        private void btnPrevPage_Click(object sender, EventArgs e)
+        {
+            if (_currentPage > 1)
+            {
+                _currentPage--;
+                RefreshGrid();
+            }
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            var totalPages = Math.Max(1, (int)Math.Ceiling((double)_sortedFlowRuns.Count / _pageSize));
+            if (_currentPage < totalPages)
+            {
+                _currentPage++;
+                RefreshGrid();
+            }
+        }
+
+        private void cbxPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(cbxPageSize.SelectedItem?.ToString(), out var newSize))
+            {
+                _pageSize = newSize;
+                _currentPage = 1;
+                RefreshGrid();
+            }
         }
 
         #endregion

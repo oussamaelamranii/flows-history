@@ -48,6 +48,12 @@ namespace MyXrmToolBoxTool1
             this.gbSolution = new System.Windows.Forms.GroupBox();
             this.cbSolutions = new System.Windows.Forms.ComboBox();
             this.gbFlowRuns = new System.Windows.Forms.GroupBox();
+            this.pnlPagination = new System.Windows.Forms.Panel();
+            this.lblPageSize = new System.Windows.Forms.Label();
+            this.cbxPageSize = new System.Windows.Forms.ComboBox();
+            this.btnPrevPage = new System.Windows.Forms.Button();
+            this.lblPageInfo = new System.Windows.Forms.Label();
+            this.btnNextPage = new System.Windows.Forms.Button();
             this.dgvFlowRuns = new System.Windows.Forms.DataGridView();
             this.FlowRunFlow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FlowRunStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +79,7 @@ namespace MyXrmToolBoxTool1
             this.gbFlowFilters.SuspendLayout();
             this.gbSolution.SuspendLayout();
             this.gbFlowRuns.SuspendLayout();
+            this.pnlPagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlowRuns)).BeginInit();
             this.gbRunFilters.SuspendLayout();
             this.SuspendLayout();
@@ -289,6 +296,7 @@ namespace MyXrmToolBoxTool1
             // gbFlowRuns
             // 
             this.gbFlowRuns.Controls.Add(this.dgvFlowRuns);
+            this.gbFlowRuns.Controls.Add(this.pnlPagination);
             this.gbFlowRuns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbFlowRuns.Location = new System.Drawing.Point(0, 56);
             this.gbFlowRuns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -298,6 +306,69 @@ namespace MyXrmToolBoxTool1
             this.gbFlowRuns.TabIndex = 1;
             this.gbFlowRuns.TabStop = false;
             this.gbFlowRuns.Text = "Flow Runs";
+            // 
+            // pnlPagination
+            // 
+            this.pnlPagination.Controls.Add(this.lblPageSize);
+            this.pnlPagination.Controls.Add(this.cbxPageSize);
+            this.pnlPagination.Controls.Add(this.btnPrevPage);
+            this.pnlPagination.Controls.Add(this.lblPageInfo);
+            this.pnlPagination.Controls.Add(this.btnNextPage);
+            this.pnlPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlPagination.Location = new System.Drawing.Point(7, 339);
+            this.pnlPagination.Name = "pnlPagination";
+            this.pnlPagination.Size = new System.Drawing.Size(694, 30);
+            this.pnlPagination.TabIndex = 1;
+            // 
+            // lblPageSize
+            // 
+            this.lblPageSize.AutoSize = true;
+            this.lblPageSize.Location = new System.Drawing.Point(0, 7);
+            this.lblPageSize.Name = "lblPageSize";
+            this.lblPageSize.Size = new System.Drawing.Size(65, 16);
+            this.lblPageSize.TabIndex = 0;
+            this.lblPageSize.Text = "Rows/page:";
+            // 
+            // cbxPageSize
+            // 
+            this.cbxPageSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxPageSize.FormattingEnabled = true;
+            this.cbxPageSize.Items.AddRange(new object[] { "25", "50", "100", "200" });
+            this.cbxPageSize.Location = new System.Drawing.Point(70, 3);
+            this.cbxPageSize.Name = "cbxPageSize";
+            this.cbxPageSize.Size = new System.Drawing.Size(65, 24);
+            this.cbxPageSize.TabIndex = 1;
+            this.cbxPageSize.SelectedIndexChanged += new System.EventHandler(this.cbxPageSize_SelectedIndexChanged);
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Location = new System.Drawing.Point(150, 3);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(75, 24);
+            this.btnPrevPage.TabIndex = 2;
+            this.btnPrevPage.Text = "◀ Prev";
+            this.btnPrevPage.UseVisualStyleBackColor = true;
+            this.btnPrevPage.Click += new System.EventHandler(this.btnPrevPage_Click);
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Location = new System.Drawing.Point(232, 7);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(80, 16);
+            this.lblPageInfo.TabIndex = 3;
+            this.lblPageInfo.Text = "Page 1 of 1";
+            this.lblPageInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Location = new System.Drawing.Point(320, 3);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(75, 24);
+            this.btnNextPage.TabIndex = 4;
+            this.btnNextPage.Text = "Next ▶";
+            this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // dgvFlowRuns
             // 
@@ -322,7 +393,7 @@ namespace MyXrmToolBoxTool1
             this.dgvFlowRuns.RowHeadersVisible = false;
             this.dgvFlowRuns.RowHeadersWidth = 51;
             this.dgvFlowRuns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFlowRuns.Size = new System.Drawing.Size(694, 366);
+            this.dgvFlowRuns.Size = new System.Drawing.Size(694, 330);
             this.dgvFlowRuns.TabIndex = 0;
             this.dgvFlowRuns.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFlowRuns_CellClick);
             this.dgvFlowRuns.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFlowRuns_CellFormatting);
@@ -503,6 +574,8 @@ namespace MyXrmToolBoxTool1
             this.gbFlowFilters.ResumeLayout(false);
             this.gbFlowFilters.PerformLayout();
             this.gbSolution.ResumeLayout(false);
+            this.pnlPagination.ResumeLayout(false);
+            this.pnlPagination.PerformLayout();
             this.gbFlowRuns.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlowRuns)).EndInit();
             this.gbRunFilters.ResumeLayout(false);
@@ -551,6 +624,12 @@ namespace MyXrmToolBoxTool1
 
         private System.Windows.Forms.GroupBox gbFlowRuns;
         private System.Windows.Forms.DataGridView dgvFlowRuns;
+        private System.Windows.Forms.Panel pnlPagination;
+        private System.Windows.Forms.Label lblPageSize;
+        private System.Windows.Forms.ComboBox cbxPageSize;
+        private System.Windows.Forms.Button btnPrevPage;
+        private System.Windows.Forms.Label lblPageInfo;
+        private System.Windows.Forms.Button btnNextPage;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn FlowRunFlow;
         private System.Windows.Forms.DataGridViewTextBoxColumn FlowRunStatus;
