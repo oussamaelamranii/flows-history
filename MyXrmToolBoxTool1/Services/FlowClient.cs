@@ -47,6 +47,20 @@ namespace MyXrmToolBoxTool1.Services
             return flowRunRemediationResponse;
         }
 
+        public bool CancelFlowRun(FlowRun flowRun)
+        {
+            var urlBuilder = new UriBuilder(BaseUrl)
+            {
+                Path = $"/providers/Microsoft.ProcessSimple/environments/{_envId}/flows/{flowRun.Flow.Id}/runs/{flowRun.Id}/cancel",
+                Query = "api-version=2016-11-01"
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, urlBuilder.Uri);
+            var response = _client.SendAsync(request).Result;
+
+            return response.IsSuccessStatusCode;
+        }
+
         public List<FlowRun> GetFlowRuns(Flow flow, string status, DateTimeOffset dateFrom, DateTimeOffset dateTo)
         {
             var flowRuns = new List<FlowRun>();

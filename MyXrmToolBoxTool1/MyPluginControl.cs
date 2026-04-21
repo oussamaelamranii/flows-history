@@ -65,6 +65,13 @@ namespace MyXrmToolBoxTool1
                     "Connect to the Power Automate API using the toolbar button, or configure Client ID/Secret for automatic connection.",
                     new Uri("https://learn.microsoft.com/en-us/power-platform/admin/manage-application-users#create-an-application-user"));
             }
+
+            // Context Menu for canceling runs
+            var cms = new ContextMenuStrip();
+            var cancelItem = new ToolStripMenuItem("Cancel Selected Running Runs");
+            cancelItem.Click += CancelItem_Click;
+            cms.Items.Add(cancelItem);
+            dgvFlowRuns.ContextMenuStrip = cms;
         }
 
         private void tsbClose_Click(object sender, EventArgs e)
@@ -624,6 +631,74 @@ namespace MyXrmToolBoxTool1
             }
 
             return field;
+        }
+
+        #endregion
+
+        #region Cancel Run
+        
+        private void CancelItem_Click(object sender, EventArgs e)
+        {
+            var selectedRows = dgvFlowRuns.SelectedRows;
+            if (selectedRows.Count == 0) return;
+
+            var runsToCancel = new List<FlowRun>();
+            foreach (DataGridViewRow row in selectedRows)
+            {
+                var run = row.DataBoundItem as FlowRun;
+                if (run != null && run.Status == FlowRunStatus.Running)
+                {
+                    runsToCancel.Add(run);
+                }
+            }
+
+            if (runsToCancel.Count == 0)
+            {
+                MessageBox.Show("No running flows selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show($"Are you sure you want to cancel {runsToCancel.Count} running flow(s)?", "Confirm Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            WorkAsync(new WorkAsyncInfo
+            {
+                Message = "Canceling flow runs...",
+                Work = (worker, args) =>
+                {
+                    var successCount = 0;
+                    var failCount = 0;
+                    foreach (var run in runsToCancel)
+                    {
+                        try
+                        {
+                            var success = flowClient.CancelFlowRun(run);
+                            if (success) successCount++;
+                            else failCount++;
+                        }
+                        catch
+                        {
+                            failCount++;
+                        }
+                    }
+                    args.Result = new { Success = successCount, Fail = failCount };
+                },
+                PostWorkCallBack = (args) =>
+                {
+                    if (args.Error != null)
+                    {
+                        ShowErrorDialog(args.Error);
+                    }
+                    else
+                    {
+                        dynamic res = args.Result;
+                        MessageBox.Show($"Canceled: {res.Success}, Failed to cancel: {res.Fail}.", "Cancel Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GetFlowRuns();
+                    }
+                }
+            });
         }
 
         #endregion
