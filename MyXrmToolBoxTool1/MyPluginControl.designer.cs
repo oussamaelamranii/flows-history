@@ -34,6 +34,8 @@ namespace MyXrmToolBoxTool1
             this.tsbConnectFlowApi = new System.Windows.Forms.ToolStripButton();
             this.tssSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.tssSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbExportCsv = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.gbFlows = new System.Windows.Forms.GroupBox();
             this.clbFlows = new System.Windows.Forms.CheckedListBox();
@@ -83,7 +85,9 @@ namespace MyXrmToolBoxTool1
             this.tssSeparator1,
             this.tsbConnectFlowApi,
             this.tssSeparator2,
-            this.tsbRefresh});
+            this.tsbRefresh,
+            this.tssSeparator3,
+            this.tsbExportCsv});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -123,6 +127,19 @@ namespace MyXrmToolBoxTool1
             this.tsbRefresh.Size = new System.Drawing.Size(97, 28);
             this.tsbRefresh.Text = "Refresh Runs";
             this.tsbRefresh.Click += new System.EventHandler(this.tsbRefresh_Click);
+            // 
+            // tssSeparator3
+            // 
+            this.tssSeparator3.Name = "tssSeparator3";
+            this.tssSeparator3.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tsbExportCsv
+            // 
+            this.tsbExportCsv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbExportCsv.Name = "tsbExportCsv";
+            this.tsbExportCsv.Size = new System.Drawing.Size(97, 28);
+            this.tsbExportCsv.Text = "Export to CSV";
+            this.tsbExportCsv.Click += new System.EventHandler(this.tsbExportCsv_Click);
             // 
             // splitContainerMain
             // 
@@ -503,6 +520,8 @@ namespace MyXrmToolBoxTool1
         private System.Windows.Forms.ToolStripButton tsbConnectFlowApi;
         private System.Windows.Forms.ToolStripSeparator tssSeparator2;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
+        private System.Windows.Forms.ToolStripSeparator tssSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbExportCsv;
 
         private System.Windows.Forms.SplitContainer splitContainerMain;
 

@@ -555,6 +555,79 @@ namespace MyXrmToolBoxTool1
 
         #endregion
 
+        #region Export
+
+        private void tsbExportCsv_Click(object sender, EventArgs e)
+        {
+            if (FlowRuns == null || !FlowRuns.Any())
+            {
+                MessageBox.Show("There are no flow runs to export.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV Files (*.csv)|*.csv";
+                sfd.FileName = $"FlowRuns_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    WorkAsync(new WorkAsyncInfo
+                    {
+                        Message = "Exporting to CSV...",
+                        Work = (worker, args) =>
+                        {
+                            var sb = new System.Text.StringBuilder();
+                            sb.AppendLine("Flow Name,Run ID,Status,Start Date,End Date,Duration,Correlation ID,Error Details,Run URL");
+
+                            foreach (var run in FlowRuns)
+                            {
+                                var flowName = EscapeCsv(run.Flow?.Name);
+                                var runId = EscapeCsv(run.Id);
+                                var status = EscapeCsv(run.Status);
+                                var startDate = EscapeCsv(run.StartDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                                var endDate = EscapeCsv(run.EndDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                                var duration = EscapeCsv(run.FormattedDuration);
+                                var corrId = EscapeCsv(run.CorrelationId);
+                                var error = EscapeCsv(run.ErrorDetails);
+                                var url = EscapeCsv(run.Url);
+
+                                sb.AppendLine($"{flowName},{runId},{status},{startDate},{endDate},{duration},{corrId},{error},{url}");
+                            }
+
+                            System.IO.File.WriteAllText(sfd.FileName, sb.ToString(), System.Text.Encoding.UTF8);
+                        },
+                        PostWorkCallBack = (args) =>
+                        {
+                            if (args.Error != null)
+                            {
+                                ShowErrorDialog(args.Error);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Successfully exported flow runs.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        private string EscapeCsv(string field)
+        {
+            if (string.IsNullOrEmpty(field))
+                return "";
+
+            if (field.Contains(",") || field.Contains("\"") || field.Contains("\n") || field.Contains("\r"))
+            {
+                return $"\"{field.Replace("\"", "\"\"")}\"";
+            }
+
+            return field;
+        }
+
+        #endregion
+
         #region Close & Save
 
         private void MyPluginControl_OnCloseTool(object sender, EventArgs e)
