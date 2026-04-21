@@ -72,7 +72,61 @@ namespace MyXrmToolBoxTool1
             cancelItem.Click += CancelItem_Click;
             cms.Items.Add(cancelItem);
             dgvFlowRuns.ContextMenuStrip = cms;
+            
+            ApplyModernStyles();
         }
+
+        #region UI Styling
+        
+        private void ApplyModernStyles()
+        {
+            // Set global font
+            var mainFont = new Font("Segoe UI", 9.5f, FontStyle.Regular);
+            this.Font = mainFont;
+            this.BackColor = Color.White;
+
+            // Style DataGridView
+            dgvFlowRuns.BackgroundColor = Color.White;
+            dgvFlowRuns.BorderStyle = BorderStyle.None;
+            dgvFlowRuns.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvFlowRuns.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvFlowRuns.RowHeadersVisible = false;
+            
+            // Alternating rows
+            dgvFlowRuns.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 249, 250);
+            dgvFlowRuns.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvFlowRuns.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215); // Modern blue
+            dgvFlowRuns.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Column Headers
+            dgvFlowRuns.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgvFlowRuns.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvFlowRuns.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.5f, FontStyle.Bold);
+            dgvFlowRuns.EnableHeadersVisualStyles = false;
+
+            // Style Main Button
+            btnGetRuns.FlatStyle = FlatStyle.Flat;
+            btnGetRuns.FlatAppearance.BorderSize = 0;
+            btnGetRuns.BackColor = Color.FromArgb(0, 120, 215); // Modern blue
+            btnGetRuns.ForeColor = Color.White;
+            btnGetRuns.Font = new Font("Segoe UI", 9.5f, FontStyle.Bold);
+            btnGetRuns.Cursor = Cursors.Hand;
+            
+            // Set Split container colors
+            splitContainerMain.BackColor = Color.FromArgb(230, 230, 230); // Makes the splitter visible
+            splitContainerMain.Panel1.BackColor = Color.White;
+            splitContainerMain.Panel2.BackColor = Color.White;
+
+            // CheckedListBox
+            clbFlows.BorderStyle = BorderStyle.None;
+            
+            // TextBoxes and ComboBoxes
+            tbSearch.BorderStyle = BorderStyle.FixedSingle;
+            cbSolutions.FlatStyle = FlatStyle.Flat;
+            cbxStatus.FlatStyle = FlatStyle.Flat;
+        }
+
+        #endregion
 
         private void tsbClose_Click(object sender, EventArgs e)
         {
