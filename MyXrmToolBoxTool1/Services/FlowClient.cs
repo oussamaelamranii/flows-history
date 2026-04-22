@@ -9,6 +9,7 @@ using MyXrmToolBoxTool1.Helpers;
 using MyXrmToolBoxTool1.Models;
 using MyXrmToolBoxTool1.Models.DTOs;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MyXrmToolBoxTool1.Services
 {
@@ -117,7 +118,8 @@ namespace MyXrmToolBoxTool1.Services
                     FormattedDuration = TimeFormatter.MillisecondsTimeString((int)duration),
                     Url = runUrl,
                     Flow = flow,
-                    CorrelationId = corrId
+                    CorrelationId = corrId,
+                    TriggerOutputsLinkUri = fr.properties.trigger?.outputsLink?.uri
                 };
 
                 flowRuns.Add(flowRun);
@@ -160,6 +162,109 @@ namespace MyXrmToolBoxTool1.Services
             }
 
             return flowRuns;
+        }
+
+        /// <summary>
+        /// Lazily loads all action steps for a specific run. Called when the user double-clicks a run row.
+        /// </summary>
+        public List<FlowRunAction> GetFlowRunActions(FlowRun flowRun)
+        {
+            var actions = new List<FlowRunAction>();
+            var actionDtos = new List<FlowRunActionDto>();
+
+            var urlBuilder = new UriBuilder(BaseUrl)
+            {
+                Path = $"/providers/Microsoft.ProcessSimple/environments/{_envId}/flows/{flowRun.Flow.Id}/runs/{flowRun.Id}/actions",
+                Query = "api-version=2016-11-01"
+            };
+
+            var url = urlBuilder.Uri.ToString();
+
+            while (!string.IsNullOrWhiteSpace(url))
+            {
+                var response = _client.GetAsync(url).Result;
+                var responseJson = response.Content.ReadAsStringAsync().Result;
+                var actionsResponse = JsonConvert.DeserializeObject<FlowRunActionsResponseDto>(responseJson);
+
+                if (actionsResponse?.value != null)
+                    actionDtos.AddRange(actionsResponse.value);
+
+                url = actionsResponse?.nextLink;
+            }
+
+            // Parallel-fetch inputs/outputs blobs (with size guard: skip if > 500KB)
+            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount * 2 };
+
+            Parallel.ForEach(actionDtos, parallelOptions, dto =>
+            {
+                var props = dto.properties;
+                if (props == null) return;
+
+                var durationMs = (int)(props.endTime - props.startTime).TotalMilliseconds;
+
+                var action = new FlowRunAction
+                {
+                    Name = dto.name,
+                    Status = props.status,
+                    StartTime = props.startTime.ToLocalTime(),
+                    EndTime = props.endTime.ToLocalTime(),
+                    DurationMs = durationMs,
+                    FormattedDuration = TimeFormatter.MillisecondsTimeString(durationMs),
+                    ErrorCode = props.error?.code,
+                    ErrorMessage = props.error?.message,
+                };
+
+                if (!string.IsNullOrWhiteSpace(props.inputsLink?.uri) && props.inputsLink.contentSize < 512_000)
+                {
+                    try { action.InputsJson = FetchAndPrettyPrintJson(props.inputsLink.uri); }
+                    catch { action.InputsJson = "(Failed to load inputs)"; }
+                }
+                else if (props.inputsLink?.contentSize >= 512_000)
+                {
+                    action.InputsJson = $"(Content too large: {props.inputsLink.contentSize / 1024} KB)";
+                }
+
+                if (!string.IsNullOrWhiteSpace(props.outputsLink?.uri) && props.outputsLink.contentSize < 512_000)
+                {
+                    try { action.OutputsJson = FetchAndPrettyPrintJson(props.outputsLink.uri); }
+                    catch { action.OutputsJson = "(Failed to load outputs)"; }
+                }
+                else if (props.outputsLink?.contentSize >= 512_000)
+                {
+                    action.OutputsJson = $"(Content too large: {props.outputsLink.contentSize / 1024} KB)";
+                }
+
+                lock (actions) { actions.Add(action); }
+            });
+
+            return actions.OrderBy(a => a.StartTime).ToList();
+        }
+
+        /// <summary>
+        /// Fetches and prettifies the trigger inputs JSON from its SAS blob URI.
+        /// </summary>
+        public string GetTriggerInputsJson(string uri)
+        {
+            if (string.IsNullOrWhiteSpace(uri)) return null;
+            return FetchAndPrettyPrintJson(uri);
+        }
+
+        private string FetchAndPrettyPrintJson(string uri)
+        {
+            // Blob URIs are pre-signed — no Authorization header needed
+            using (var httpClient = new HttpClient())
+            {
+                var json = httpClient.GetStringAsync(uri).Result;
+                try
+                {
+                    var token = JToken.Parse(json);
+                    return token.ToString(Formatting.Indented);
+                }
+                catch
+                {
+                    return json;
+                }
+            }
         }
     }
 }

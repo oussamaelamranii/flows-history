@@ -80,7 +80,10 @@ namespace MyXrmToolBoxTool1
             cancelItem.Click += CancelItem_Click;
             cms.Items.Add(cancelItem);
             dgvFlowRuns.ContextMenuStrip = cms;
-            
+
+            // Double-click a row to open Run Details
+            dgvFlowRuns.CellDoubleClick += DgvFlowRuns_CellDoubleClick;
+
             ApplyModernStyles();
         }
 
@@ -700,6 +703,56 @@ namespace MyXrmToolBoxTool1
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void DgvFlowRuns_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var flowRun = dgvFlowRuns.Rows[e.RowIndex].DataBoundItem as FlowRun;
+            if (flowRun == null) return;
+
+            // If already lazily loaded, open immediately
+            if (flowRun.Actions != null)
+            {
+                OpenRunDetailsForm(flowRun);
+                return;
+            }
+
+            WorkAsync(new WorkAsyncInfo
+            {
+                Message = "Loading run details...",
+                Work = (worker, args) =>
+                {
+                    // Lazy-load trigger inputs
+                    if (!string.IsNullOrWhiteSpace(flowRun.TriggerOutputsLinkUri))
+                    {
+                        try { flowRun.TriggerInputsJson = flowClient.GetTriggerInputsJson(flowRun.TriggerOutputsLinkUri); }
+                        catch { flowRun.TriggerInputsJson = "(Failed to load trigger inputs)"; }
+                    }
+
+                    // Lazy-load all action steps
+                    flowRun.Actions = flowClient.GetFlowRunActions(flowRun);
+                    args.Result = flowRun;
+                },
+                PostWorkCallBack = (args) =>
+                {
+                    if (args.Error != null)
+                    {
+                        ShowErrorDialog(args.Error.InnerException ?? args.Error);
+                        return;
+                    }
+                    OpenRunDetailsForm((FlowRun)args.Result);
+                }
+            });
+        }
+
+        private void OpenRunDetailsForm(FlowRun flowRun)
+        {
+            using (var form = new RunDetailsForm(flowRun))
+            {
+                form.ShowDialog(this);
             }
         }
 
